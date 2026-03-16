@@ -1,0 +1,396 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Editorial Noir Design System
+ * Sophisticated dark theme for professional educational content
+ * Primary: Charcoal (#1a1a1a, #242424)
+ * Accent: Copper/Bronze (#c9a87c, #b8956a)
+ * Text: Warm white with subtle tint
+ */
+
+:root {
+  /* Core Colors - Editorial Noir */
+  --charcoal-900: #0d0d0d;
+  --charcoal-800: #1a1a1a;
+  --charcoal-700: #242424;
+  --charcoal-600: #2d2d2d;
+  --charcoal-500: #363636;
+  --charcoal-400: #4a4a4a;
+  
+  /* Copper Accent Palette */
+  --copper-500: #c9a87c;
+  --copper-400: #d4b896;
+  --copper-300: #dec9b0;
+  --copper-600: #b8956a;
+  --copper-700: #a78258;
+  
+  /* Semantic Colors */
+  --text-primary: #f5f0e8;
+  --text-secondary: #c4bdb0;
+  --text-tertiary: #8a8278;
+  --text-muted: #5c564e;
+  
+  /* Difficulty Level Colors (Subtle Copper Intensity) */
+  --level-a1: #8a7a6a;
+  --level-a2: #9a8a7a;
+  --level-b1: #aa9a8a;
+  --level-b2: #c9a87c;
+  --level-c1: #d4b896;
+  --level-c2: #e8d4b8;
+  
+  /* Status Colors */
+  --success: #7a9a7a;
+  --warning: #c9a87c;
+  --error: #b87a7a;
+  
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  --font-display: 'Playfair Display', Georgia, serif;
+  
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* shadcn/ui overrides */
+  --background: var(--charcoal-800);
+  --foreground: var(--text-primary);
+  --card: var(--charcoal-700);
+  --card-foreground: var(--text-primary);
+  --popover: var(--charcoal-700);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--copper-500);
+  --primary-foreground: var(--charcoal-900);
+  --secondary: var(--charcoal-600);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--charcoal-600);
+  --muted-foreground: var(--text-tertiary);
+  --accent: var(--copper-500);
+  --accent-foreground: var(--charcoal-900);
+  --destructive: var(--error);
+  --destructive-foreground: var(--text-primary);
+  --border: var(--charcoal-500);
+  --input: var(--charcoal-600);
+  --ring: var(--copper-500);
+  --radius: var(--radius-md);
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--charcoal-800);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+/* Monospace for metrics and data */
+.font-mono {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--charcoal-700);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--charcoal-500);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--charcoal-400);
+}
+
+/* Selection */
+::selection {
+  background: var(--copper-600);
+  color: var(--charcoal-900);
+}
+
+/* Focus States */
+:focus-visible {
+  outline: 2px solid var(--copper-500);
+  outline-offset: 2px;
+}
+
+/* Button Base */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+}
+
+/* Input Base */
+input, textarea, select {
+  font-family: inherit;
+  background: var(--charcoal-600);
+  border: 1px solid var(--charcoal-500);
+  color: var(--text-primary);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast);
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--copper-500);
+  outline: none;
+}
+
+/* Utility Classes */
+.text-gradient {
+  background: linear-gradient(135deg, var(--copper-400), var(--copper-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.border-copper {
+  border-color: var(--copper-500);
+}
+
+.bg-copper {
+  background-color: var(--copper-500);
+}
+
+.text-copper {
+  color: var(--copper-500);
+}
+
+/* Difficulty Level Classes */
+.level-a1 { color: var(--level-a1); }
+.level-a2 { color: var(--level-a2); }
+.level-b1 { color: var(--level-b1); }
+.level-b2 { color: var(--level-b2); }
+.level-c1 { color: var(--level-c1); }
+.level-c2 { color: var(--level-c2); }
+
+/* Segment Active State */
+.segment-active {
+  border-left: 3px solid var(--copper-500);
+  background: linear-gradient(90deg, rgba(201, 168, 124, 0.1), transparent);
+}
+
+/* Warning State for Advanced Content */
+.advanced-warning {
+  border-left: 3px solid var(--copper-600);
+}
+
+/* Card Hover Effect */
+.card-hover {
+  transition: all var(--transition-base);
+}
+
+.card-hover:hover {
+  background-color: var(--charcoal-600);
+  transform: translateY(-1px);
+}
+
+/* Video Player Container */
+.video-container {
+  position: relative;
+  background: var(--charcoal-900);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Timeline Marker */
+.timeline-marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--copper-500);
+  opacity: 0.6;
+  transition: opacity var(--transition-fast);
+}
+
+.timeline-marker:hover {
+  opacity: 1;
+  width: 3px;
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 4px;
+  background: var(--charcoal-600);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--copper-600), var(--copper-400));
+  border-radius: var(--radius-sm);
+  transition: width 0.1s linear;
+}
+
+/* Exercise Option */
+.exercise-option {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--charcoal-500);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.exercise-option:hover {
+  border-color: var(--copper-500);
+  background: var(--charcoal-600);
+}
+
+.exercise-option.selected {
+  border-color: var(--copper-500);
+  background: rgba(201, 168, 124, 0.15);
+}
+
+.exercise-option.correct {
+  border-color: var(--success);
+  background: rgba(122, 154, 122, 0.15);
+}
+
+.exercise-option.incorrect {
+  border-color: var(--error);
+  background: rgba(184, 122, 122, 0.15);
+}
+
+/* Vocabulary Card */
+.vocab-card {
+  border: 1px solid var(--charcoal-500);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.vocab-card:hover {
+  border-color: var(--copper-500);
+}
+
+.vocab-card.expanded {
+  border-color: var(--copper-500);
+  box-shadow: 0 0 0 1px var(--copper-500);
+}
+
+/* Metric Badge */
+.metric-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--charcoal-600);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Loading Animation */
+@keyframes pulse-copper {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading-pulse {
+  animation: pulse-copper 1.5s ease-in-out infinite;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.25rem;
+  }
+}
